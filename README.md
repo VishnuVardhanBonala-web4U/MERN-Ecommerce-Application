@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+![image](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/fabcbadb-6ac6-4d45-bb34-13e2e5bd097c)Complete E-commerce Application Using React & Node.Js & Mongodb 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Customer Pages 
+![Screenshot (289)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/c76bdfad-7651-403e-9e94-271d01e5f632)
+![Screenshot (290)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/8afcfb9a-2155-43bc-a04c-93b689a266c3)
+![Screenshot (291)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/428c9436-dfb7-4946-a7b6-aa081e42705b)
+![Screenshot (292)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/96d6ee33-306d-4599-b91b-d642be5fec5d)
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Admin Pages 
+![Screenshot (293)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/680428ac-561f-4f3a-9a8e-0cab3f8dfffb)
+![Screenshot (294)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/5acd68e0-2209-4e90-bf05-57c30e6d0b14)
+![Screenshot (296)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/5626836c-458f-43f2-9344-789cedc1e31f)
+![Screenshot (297)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/9ac9d3c3-99d9-4640-9a57-4f5205ae59cc)
