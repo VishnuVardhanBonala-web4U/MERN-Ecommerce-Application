@@ -1,28 +1,38 @@
 
 
-
-
-
-
 **Complete E-commerce Application Using React & Node.Js & Mongodb**
 
 
-const Note = ()=>{
-**SEO also Implemented**
+const **Note** = ()=>{
+**SEO also Implemented For All Pages**
 }
 
-**Customer Pages**
+**AUTH Pages**
 
-![Screenshot (289)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/c76bdfad-7651-403e-9e94-271d01e5f632)
-![Screenshot (290)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/8afcfb9a-2155-43bc-a04c-93b689a266c3)
-![Screenshot (291)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/428c9436-dfb7-4946-a7b6-aa081e42705b)
-![Screenshot (292)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/96d6ee33-306d-4599-b91b-d642be5fec5d)
+![{C4349FFB-EA98-4025-B5B9-EEFBC302B08D}](https://github.com/user-attachments/assets/58082cf1-c83d-487a-975c-92ae6a3c24c4)
+
+![{6BDBC1BF-A6E5-4910-88C1-1231AC1D2799}](https://github.com/user-attachments/assets/1b2f5727-2949-4759-8fdf-4f625a2587d5)
+
+
+**Customer Pages**
+![{A1431C6D-9964-442C-A948-DFE22E82B494}](https://github.com/user-attachments/assets/017d33fb-d798-49ed-9931-4a66a4b1a954)
+![{B252E984-5EAE-4161-A484-53342245A60E}](https://github.com/user-attachments/assets/539005c0-7939-4796-b588-1f224173755a)
+
+![{1F4EFCB9-F62E-4821-97B9-150F293B4A60}](https://github.com/user-attachments/assets/dd4aad9b-473a-4f90-9e0f-41e70d214b20)
+
+![{190610B3-1224-43BB-96B6-6826F0C69466}](https://github.com/user-attachments/assets/02ab91bd-3cc4-4f6f-98af-f5fdb48f3c0f)
+![{E370584D-546A-4349-A689-D10C6B762957}](https://github.com/user-attachments/assets/1e05d66d-dd87-4bc0-a3bb-a1890432f51c)
+
+![{C2863574-11EE-4F9A-839C-C06F73DF3764}](https://github.com/user-attachments/assets/43bf1a06-0742-4bb8-a8b0-8863b5871e81)
+
+
+![{89A07741-F2B4-450D-9795-57E984CA84DA}](https://github.com/user-attachments/assets/1cccb882-e1b9-4bd1-9f2a-c14f1baf9e5e)
 
 
 
 **Admin Pages**
-![image](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/fabcbadb-6ac6-4d45-bb34-13e2e5bd097c)
-![Screenshot (293)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/680428ac-561f-4f3a-9a8e-0cab3f8dfffb)
-![Screenshot (294)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/5acd68e0-2209-4e90-bf05-57c30e6d0b14)
-![Screenshot (296)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/5626836c-458f-43f2-9344-789cedc1e31f)
-![Screenshot (297)](https://github.com/VishnuVardhanBonala-web4U/MERN-Ecommerce-Application/assets/125671722/9ac9d3c3-99d9-4640-9a57-4f5205ae59cc)
+![{A3200AB7-C553-4DDF-9D72-C07570189509}](https://github.com/user-attachments/assets/d58d8230-8eff-4b9f-9074-c9f8b871f8b2)
+![{150FE0C0-BFE6-47E3-BA8B-9409D7BFCB46}](https://github.com/user-attachments/assets/860c21e0-1282-433e-93e9-952dc9ad9949)
+![{70C8F6C9-8E64-4C67-9645-B9C2CF7417E1}](https://github.com/user-attachments/assets/7a6c4360-97d0-426c-a992-eca384313868)
+![{A2B76E69-1102-45C4-8DB9-FFCCD603AA01}](https://github.com/user-attachments/assets/f5e807d6-d672-4b8f-b67d-dcc4afd2ac9d)
+
