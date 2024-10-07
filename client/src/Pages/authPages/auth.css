@@ -1,0 +1,322 @@
+/* General styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Register container */
+.register-container {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensure the .cart_image is positioned relative to this container */
+}
+
+/* Cart image styles */
+/*  */
+
+/* Keyframes for the moving car animation */
+
+/* Apply animation to the cart image */
+.cart_image {
+  position: relative; /* Change to relative for proper image positioning */
+  width: 100%; /* Full width */
+  height: 200px; /* Fixed height */
+  overflow: hidden; /* Hide any overflow from the image */
+  display: flex;
+  justify-content: center; /* Center align image horizontally */
+  align-items: center; /* Center align image vertically */
+}
+
+.cart_image img {
+  position: absolute; /* Absolute positioning to enable animation */
+  top: 3vh; /* Adjust as needed */
+  left: -100%; /* Start off-screen to the left */
+  width: 100%; /* Adjust size as needed */
+  height: auto; /* Maintain aspect ratio */
+  transform-style: preserve-3d;
+  animation: moveCar 5s infinite alternate ease-in-out; /* Apply animation */
+  transform-origin: center;
+}
+
+@keyframes moveCar {
+  0% {
+    transform: translateX(-20%) rotateY(-360deg); /* Start off-screen to the left */
+  }
+  50% {
+    transform: translateX(50%) rotate(15deg); /* Move to the center and tilt */
+  }
+  100% {
+    transform: translateX(150%) rotate(0deg); /* Move off-screen to the right */
+  }
+}
+
+/* Optional: Add a shadow for a more dynamic effect */
+.cart_image::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20vh;
+  border-radius: 50%;
+  top: 100%; /* Position shadow below the image */
+  left: 0;
+  filter: blur(12px); /* Adjust shadow blur */
+  z-index: -1;
+}
+
+/* Card styles */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Login container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7f9fc;
+  padding: 20px;
+}
+
+/* Login form */
+.login-form {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Login title */
+.login-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Form control styles */
+.form-control {
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Primary button styles */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Dark button styles */
+.btn-dark {
+  background-color: #343a40;
+  border-radius: 8px;
+}
+
+.btn-dark:hover {
+  background-color: #1d2124;
+}
+
+/* Container fluid background color */
+.container-fluid {
+  background-color: #f8f9fa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 788px) {
+  .btn {
+    font-size: 12px; /* Adjust button font size for smaller screens */
+  }
+
+  .register-container {
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+  }
+
+  .cart_image {
+    left: auto;
+    top: 5vh; /* Adjust for smaller screens */
+  }
+}
+
+/* Container to center the form */
+.register-container {
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px; /* Add some padding to avoid edge issues on smaller screens */
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+/* Card styling */
+.card {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 100%; /* Ensure it scales with the screen size */
+  width: 100%;
+}
+
+/* Form controls */
+.form-control {
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 788px) {
+  .register-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* Ensure padding for mobile screens */
+  }
+
+  .card {
+    padding: 20px;
+    width: 100%;
+    max-width: 90%; /* Reduce width on smaller screens */
+  }
+
+  .form-control {
+    font-size: 14px; /* Adjust font size for better readability on small screens */
+  }
+
+  .btn-primary {
+    font-size: 14px; /* Adjust button font size for better fit */
+  }
+
+  .cart_image {
+    position: absolute;
+    top: 5vh;
+    left: auto;
+    right: 5%; /* Adjust position for smaller screens */
+    width: 120px; /* Adjust size for better fit */
+    height: 120px; /* Adjust size for better fit */
+  }
+}
+
+/* Further responsiveness for very small screens */
+@media (max-width: 576px) {
+  .card {
+    padding: 15px;
+  }
+
+  .form-control {
+    font-size: 12px; /* Further adjust font size */
+  }
+
+  .btn-primary {
+    font-size: 12px; /* Further adjust button font size */
+  }
+
+  .cart_image {
+    width: 100px; /* Further adjust size */
+    height: 100px; /* Further adjust size */
+  }
+}
+
+
+.cart_image img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.register-container {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.card {
+  border-radius: 15px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.form-control {
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.text-primary {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.text-primary:hover {
+  text-decoration: underline;
+}

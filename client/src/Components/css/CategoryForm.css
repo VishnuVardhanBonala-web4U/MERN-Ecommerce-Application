@@ -1,0 +1,28 @@
+/* CreateCategory.css */
+.container-fluid {
+  background-color: #f8f9fa;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+.btn {
+  font-size: 0.875rem;
+}
+
+.update-category-modal .ant-modal-content {
+  padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 1rem;
+  }
+}

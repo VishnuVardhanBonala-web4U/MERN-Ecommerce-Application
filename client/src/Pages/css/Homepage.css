@@ -1,0 +1,38 @@
+.filter-section {
+  padding: 10px; /* Reduced padding for filter section */
+}
+
+.filters-container {
+  margin-bottom: 20px; /* Margin for spacing */
+}
+
+.card {
+  margin: 0 auto; /* Center the card */
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.02); /* Subtle hover effect */
+}
+
+.btn_container {
+  justify-content: space-between; /* Distribute buttons evenly */
+}
+
+.text-muted {
+  font-weight: 300; /* Lighter text */
+}
+
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 15px; /* Reduced margin on mobile */
+  }
+
+  .filter-section {
+    display: none; /* Hide filters on mobile by default */
+  }
+
+  .filter-section.show {
+    display: block; /* Show filters when toggled */
+  }
+}

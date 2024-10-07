@@ -1,0 +1,54 @@
+.dashboard {
+  background-color: #f9f9f9; /* Light background for the dashboard */
+  min-height: 100vh;
+}
+
+.userdetails_container {
+  padding: 0 5rem 0 2rem !important;
+}
+.dashboard-header,
+.dashboard-info {
+  color: #333; /* Dark color for text */
+}
+
+.dashboard-header {
+  display: flex; /* Ensure it takes full viewport height */
+
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.dashboard-info {
+  display: flex; /* Ensure it takes full viewport height */
+
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card {
+  border: 1px solid #dee2e6; /* Light border for the card */
+  border-radius: 0.25rem; /* Rounded corners for the card */
+  background-color: #ffffff; /* White background for the card */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Subtle shadow */
+}
+
+.dashboard-icon {
+  margin-right: 0.5rem; /* Space between icon and text */
+  color: #007bff; /* Primary color for icons */
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    font-size: 1.25rem;
+  }
+
+  .dashboard-info {
+    font-size: 1rem;
+  }
+
+  .card {
+    margin: 0 auto;
+    width: 100%; /* Full width on smaller screens */
+  }
+}
