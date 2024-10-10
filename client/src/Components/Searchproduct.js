@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSearch } from "../hooks/useSearch";
-import { base_url } from "../config/URL";
+
 
 const SearchInput = () => {
   const [values, setValues] = useSearch();
@@ -12,7 +12,7 @@ const SearchInput = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `${base_url}/search-product/${values.keyword}`
+        `${process.env.REACT_APP_BASE_URL}/search-product/${values.keyword}`
       );
       setValues({ ...values, results: data });
       navigate("/search");

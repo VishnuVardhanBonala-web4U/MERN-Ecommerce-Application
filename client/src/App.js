@@ -27,6 +27,8 @@ import Profile from "./Components/Profile";
 import AdminOrders from "./Components/Admin/AdminOrders";
 
 function App() {
+
+  console.log("check port", process.env.REACT_APP_BASE_URL)
   return (
     <>
       <Routes>

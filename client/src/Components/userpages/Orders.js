@@ -4,7 +4,7 @@ import UserMenu from "../../Components/userpages/UserMenu";
 import moment from "moment";
 import { useAuth } from "../../Context/AuthContext";
 import Layout from "../Layout/Layout";
-import { base_url } from "../../config/URL";
+import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 import "../css/Orders.css";
 
 const Orders = () => {
@@ -13,7 +13,7 @@ const Orders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/orders`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/orders`);
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -53,18 +53,16 @@ const Orders = () => {
                     <tr>
                       <td>{index + 1}</td>
                       <td
-                        className={`text-${
-                          order.status === "Completed" ? "success" : "danger"
-                        }`}
+                        className={`text-${order.status === "Completed" ? "success" : "danger"
+                          }`}
                       >
                         {order.status}
                       </td>
                       <td>{order.buyer?.name}</td>
                       <td>{moment(order.createAt).fromNow()}</td>
                       <td
-                        className={`text-${
-                          order.payment.success ? "success" : "danger"
-                        }`}
+                        className={`text-${order.payment.success ? "success" : "danger"
+                          }`}
                       >
                         {order.payment.success ? "Success" : "Failed"}
                       </td>
@@ -77,7 +75,7 @@ const Orders = () => {
                     <div className="col-md-4 mb-3" key={product._id}>
                       <div className="card">
                         <img
-                          src={`${base_url}/get-photo/${product._id}`}
+                          src={`${process.env.REACT_APP_BASE_URL}/get-photo/${product._id}`}
                           className="card-img-top object-fit-fill"
                           alt={product.name}
                         />

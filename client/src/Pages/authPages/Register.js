@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { RegisterJson } from "../../data/Authdata";
-import { base_url } from "../../config/URL";
+import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 import "./auth.css";
 import Image from "../../../src/images/cart.png";
 
@@ -26,7 +26,7 @@ const Register = () => {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${base_url}/register`, { ...userdata });
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/register`, { ...userdata });
       if (res && res.data.success) {
         toast.success(res.data.message);
         navigate("/login");

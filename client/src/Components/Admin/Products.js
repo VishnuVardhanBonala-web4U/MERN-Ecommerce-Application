@@ -5,14 +5,14 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import AdminMenu from "./AdminMenu";
-import { base_url } from "../../config/URL";
+import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 const Products = () => {
   const [products, setProducts] = useState([]);
 
   //getall products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/getall-product`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/getall-product`);
       if (data?.success) {
         toast.success(data?.message);
       } else {
@@ -35,7 +35,7 @@ const Products = () => {
 
   const deleteProduct = async (cid) => {
     try {
-      const { data } = await axios.delete(`${base_url}/delete-product/${cid}`);
+      const { data } = await axios.delete(`${process.env.REACT_APP_BASE_URL}/delete-product/${cid}`);
       if (data?.success) {
         toast.success("Category Deleted");
       } else {
@@ -58,7 +58,7 @@ const Products = () => {
             {products?.map((p) => (
               <div className="card m-2 mb-3" style={{ width: "15rem" }}>
                 <img
-                  src={`${base_url}/get-photo/${p._id}`}
+                  src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
                   className="card-img-top "
                   style={{ height: "15rem" }}
                   alt={p.name}

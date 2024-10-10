@@ -3,7 +3,7 @@ import Layout from "./Layout/Layout";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { base_url } from "../config/URL";
+
 
 const CategoryPage = () => {
   const [products, setProducts] = useState([]);
@@ -15,7 +15,7 @@ const CategoryPage = () => {
   const getProductByCat = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`${base_url}/product-category/${slug}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/product-category/${slug}`);
       if (data?.success) {
         setProducts(data?.products || []);
         setCategory(data?.category || {});
@@ -55,7 +55,7 @@ const CategoryPage = () => {
                     style={{ width: "18rem" }} // Adjusted width for better readability
                   >
                     <img
-                      src={`${base_url}/get-photo/${product._id}`}
+                      src={`${process.env.REACT_APP_BASE_URL}/get-photo/${product._id}`}
                       className="card-img-top"
                       alt={product.name}
                     />

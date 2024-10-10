@@ -5,7 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import CategoryForm from "../Form/CategoryForm";
 import { Modal } from "antd";
-import { base_url } from "../../config/URL";
+import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 import "../css/CategoryForm.css"; // Custom CSS file
 
 const CreateCategory = () => {
@@ -18,7 +18,7 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${base_url}/create-category`, {
+      const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/create-category`, {
         name,
       });
       if (data?.success) {
@@ -36,7 +36,7 @@ const CreateCategory = () => {
 
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/get-category`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-category`);
       setCategories(data?.category);
     } catch (error) {
       console.log(error);
@@ -46,7 +46,7 @@ const CreateCategory = () => {
 
   const deleteCategory = async (cid) => {
     try {
-      const { data } = await axios.delete(`${base_url}/delete-category/${cid}`);
+      const { data } = await axios.delete(`${process.env.REACT_APP_BASE_URL}/delete-category/${cid}`);
       if (data?.success) {
         toast.success("Category Deleted");
         getAllCategory();
@@ -62,7 +62,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `${base_url}/update-category/${selected._id}`,
+        `${process.env.REACT_APP_BASE_URL}/update-category/${selected._id}`,
         { name: updatedName }
       );
       if (data?.success) {

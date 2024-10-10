@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import { base_url } from "../../config/URL";
+import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 
 const { Option } = Select;
 const CreateProduct = () => {
@@ -22,7 +22,7 @@ const CreateProduct = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/get-category`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-category`);
       if (data?.success) {
         Setcategories(data?.category);
       }
@@ -49,7 +49,7 @@ const CreateProduct = () => {
       productData.append("photo", photo);
       productData.append("category", category);
       productData.append("shipping", shipping);
-      const { data } = axios.post(`${base_url}/create-product`, productData);
+      const { data } = axios.post(`${process.env.REACT_APP_BASE_URL}/create-product`, productData);
       alert(data);
       if (data?.success) {
         toast.error(data?.message);

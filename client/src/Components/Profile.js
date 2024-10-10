@@ -4,7 +4,7 @@ import axios from "axios";
 import UserMenu from "./userpages/UserMenu";
 import { useAuth } from "../Context/AuthContext";
 import Layout from "./Layout/Layout";
-import { base_url } from "../config/URL";
+
 import { FaUser, FaEnvelope, FaLock, FaPhone, FaHome } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/Profile.css"; // Ensure you have a custom CSS file for additional styles
@@ -33,7 +33,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`${base_url}/profile`, {
+      const { data } = await axios.put(`${process.env.REACT_APP_BASE_URL}/profile`, {
         name,
         password,
         phone,

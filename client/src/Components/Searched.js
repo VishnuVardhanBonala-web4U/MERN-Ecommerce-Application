@@ -2,7 +2,7 @@ import React from "react";
 
 import Layout from "./Layout/Layout";
 import { useSearch } from "../hooks/useSearch";
-import { base_url } from "../config/URL";
+
 
 const Searched = () => {
   const [values, setValues] = useSearch();
@@ -20,7 +20,7 @@ const Searched = () => {
             {values?.results.map((p) => (
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
-                  src={`${base_url}/get-photo/${p._id}`}
+                  src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

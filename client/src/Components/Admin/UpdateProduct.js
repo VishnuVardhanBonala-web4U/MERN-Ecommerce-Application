@@ -6,7 +6,7 @@ import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import AdminMenu from "./AdminMenu";
-import { base_url } from "../../config/URL";
+import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 const { Option } = Select;
 
 const UpdateProduct = () => {
@@ -26,7 +26,7 @@ const UpdateProduct = () => {
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
-        `${base_url}/single-product/${params.slug}`
+        `${process.env.REACT_APP_BASE_URL}/single-product/${params.slug}`
       );
       console.log(data.product.price);
       setName(data.product.name);
@@ -49,7 +49,7 @@ const UpdateProduct = () => {
   //get all category
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/get-category`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -75,7 +75,7 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.put(
-        `${base_url}/update-product/${id}`,
+        `${process.env.REACT_APP_BASE_URL}/update-product/${id}`,
         productData
       );
       if (data?.success) {
@@ -143,7 +143,7 @@ const UpdateProduct = () => {
                 ) : (
                   <div className="text-center">
                     <img
-                      src={`${base_url}/get-photo/${id}`}
+                      src={`${process.env.REACT_APP_BASE_URL}/get-photo/${id}`}
                       alt="product_photo"
                       height={"200px"}
                       className="img img-responsive"

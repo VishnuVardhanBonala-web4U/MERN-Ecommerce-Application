@@ -3,7 +3,7 @@ import Layout from "../Components/Layout/Layout";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import { base_url } from "../config/URL";
+
 
 const ForgotPass = () => {
   const [userdata, Setuserdata] = useState({
@@ -20,7 +20,7 @@ const ForgotPass = () => {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${base_url}/forgetpass`, {
+      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/forgetpass`, {
         ...userdata,
       });
       if (res && res.data.success) {

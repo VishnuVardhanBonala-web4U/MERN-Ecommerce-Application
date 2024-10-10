@@ -6,7 +6,7 @@ import DropIn from "braintree-web-drop-in-react";
 import { useCart } from "../Context/cart";
 import Layout from "../Components/Layout/Layout";
 import { useAuth } from "../Context/AuthContext";
-import { base_url } from "../config/URL";
+
 import "./css/CartPage.css";
 
 const CartPage = () => {
@@ -44,7 +44,7 @@ const CartPage = () => {
   // Get Braintree token
   const getToken = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/braintree/token`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/braintree/token`);
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -60,7 +60,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post(`${base_url}/braintree/payment`, {
+      const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/braintree/payment`, {
         nonce,
         cart,
       });
@@ -85,11 +85,9 @@ const CartPage = () => {
             </h1>
             <p>
               {cart?.length
-                ? `You have ${cart.length} item${
-                    cart.length > 1 ? "s" : ""
-                  } in your cart ${
-                    auth?.token ? "" : "please login to checkout!"
-                  }`
+                ? `You have ${cart.length} item${cart.length > 1 ? "s" : ""
+                } in your cart ${auth?.token ? "" : "please login to checkout!"
+                }`
                 : "Your cart is empty"}
             </p>
           </div>
@@ -101,7 +99,7 @@ const CartPage = () => {
               <div className="card mb-3 d-flex flex-row" key={p._id}>
                 <div className="card-img-container">
                   <img
-                    src={`${base_url}/get-photo/${p._id}`}
+                    src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
                     className="card-img"
                     alt={p.name}
                   />

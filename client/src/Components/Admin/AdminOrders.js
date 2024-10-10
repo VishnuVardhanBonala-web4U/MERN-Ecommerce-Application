@@ -5,7 +5,7 @@ import { Select } from "antd";
 import Layout from "../Layout/Layout";
 import AdminMenu from "./AdminMenu";
 import { useAuth } from "../../Context/AuthContext";
-import { base_url } from "../../config/URL";
+import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const { Option } = Select;
@@ -23,7 +23,7 @@ const AdminOrders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/all-orders`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/all-orders`);
       setOrders(data);
     } catch (error) {
       console.error(error);
@@ -36,7 +36,7 @@ const AdminOrders = () => {
 
   const handleChange = async (orderId, value) => {
     try {
-      await axios.put(`${base_url}/order-status/${orderId}`, {
+      await axios.put(`${process.env.REACT_APP_BASE_URL}/order-status/${orderId}`, {
         status: value,
       });
       getOrders();
@@ -99,7 +99,7 @@ const AdminOrders = () => {
                     >
                       <div className="col-md-3 col-sm-12">
                         <img
-                          src={`${base_url}/get-photo/${p._id}`}
+                          src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
                           className="card-img-top img-fluid"
                           alt={p.name}
                         />

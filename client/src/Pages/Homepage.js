@@ -6,7 +6,7 @@ import { Checkbox, Radio } from "antd";
 import { Prices } from "../Components/Prices";
 import toast from "react-hot-toast";
 import { useCart } from "../Context/cart";
-import { base_url } from "../config/URL";
+
 import "./css/Homepage.css";
 
 const Homepage = () => {
@@ -22,7 +22,7 @@ const Homepage = () => {
   // Fetch categories
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get(`${base_url}/get-category`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -39,7 +39,7 @@ const Homepage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`${base_url}/getall-product`);
+      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/getall-product`);
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
@@ -61,7 +61,7 @@ const Homepage = () => {
 
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post(`${base_url}/filter-product`, {
+      const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/filter-product`, {
         checked,
         radio,
       });
@@ -137,7 +137,7 @@ const Homepage = () => {
                 >
                   <div className="card shadow-sm" style={{ minHeight: "20rem" }}>
                     <img
-                      src={`${base_url}/get-photo/${p._id}`}
+                      src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
                       className="card-img-top p-2"
                       alt={p.name}
                       style={{ height: "10rem", objectFit: "cover" }}
