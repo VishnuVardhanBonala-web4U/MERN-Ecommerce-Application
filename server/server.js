@@ -38,7 +38,7 @@ app.use(productRouter);
 }); */
 
 /* server listen */
-app.listen(process.env.PORT, async (req, res) => {
+app.listen( await process.env.PORT, async (req, res) => {
   await ConnectDB();
   console.log(`SERVER RUNNING ON PORT ${process.env.port}`);
 });
