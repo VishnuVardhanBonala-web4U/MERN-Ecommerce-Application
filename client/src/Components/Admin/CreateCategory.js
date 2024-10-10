@@ -5,7 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import CategoryForm from "../Form/CategoryForm";
 import { Modal } from "antd";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
+
 import "../css/CategoryForm.css"; // Custom CSS file
 
 const CreateCategory = () => {

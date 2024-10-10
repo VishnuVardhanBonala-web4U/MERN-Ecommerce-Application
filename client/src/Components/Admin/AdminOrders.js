@@ -5,7 +5,6 @@ import { Select } from "antd";
 import Layout from "../Layout/Layout";
 import AdminMenu from "./AdminMenu";
 import { useAuth } from "../../Context/AuthContext";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const { Option } = Select;

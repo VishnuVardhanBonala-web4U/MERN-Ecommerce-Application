@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext";
 import { LoginJson } from "../../data/Authdata";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
+
 
 const Login = () => {
   const navigate = useNavigate();

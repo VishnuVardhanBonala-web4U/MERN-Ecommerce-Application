@@ -6,7 +6,7 @@ import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import AdminMenu from "./AdminMenu";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
+
 const { Option } = Select;
 
 const UpdateProduct = () => {

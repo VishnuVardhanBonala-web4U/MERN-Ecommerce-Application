@@ -3,7 +3,7 @@ import { useAuth } from "../../Context/AuthContext";
 import axios from "axios";
 import { Outlet } from "react-router-dom";
 import Spinner from "../Spinner";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
+
 const UserPrivateRoute = () => {
   const [ok, Setok] = useState(false);
   const [auth, setAuth] = useAuth();

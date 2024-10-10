@@ -4,7 +4,7 @@ import UserMenu from "../../Components/userpages/UserMenu";
 import moment from "moment";
 import { useAuth } from "../../Context/AuthContext";
 import Layout from "../Layout/Layout";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
+
 import "../css/Orders.css";
 
 const Orders = () => {

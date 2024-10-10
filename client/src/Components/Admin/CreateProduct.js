@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
+
 
 const { Option } = Select;
 const CreateProduct = () => {

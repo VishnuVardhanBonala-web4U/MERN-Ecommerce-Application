@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import AdminMenu from "./AdminMenu";
-import { process.env.REACT_APP_BASE_URL } from "../../config/URL";
+
 const Products = () => {
   const [products, setProducts] = useState([]);
 
