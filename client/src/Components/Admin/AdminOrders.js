@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
-import { Select } from "antd";
 import Layout from "../Layout/Layout";
 import AdminMenu from "./AdminMenu";
 import { useAuth } from "../../Context/AuthContext";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-const { Option } = Select;
 
 const AdminOrders = () => {
   const [status, setStatus] = useState([
@@ -18,103 +14,128 @@ const AdminOrders = () => {
     "Cancelled",
   ]);
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state to show a loading indicator
   const [auth] = useAuth();
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/all-orders`);
+      setLoading(true); // Set loading to true while fetching data
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/all-orders`
+      );
       setOrders(data);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching orders:", error);
+    } finally {
+      setLoading(false); // Set loading to false after data is fetched or error occurred
     }
   };
 
   useEffect(() => {
-    if (auth?.token) getOrders();
+    if (auth?.token) {
+      getOrders();
+    }
   }, [auth?.token]);
 
   const handleChange = async (orderId, value) => {
     try {
-      await axios.put(`${process.env.REACT_APP_BASE_URL}/order-status/${orderId}`, {
-        status: value,
-      });
-      getOrders();
+      await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/order-status/${orderId}`,
+        { status: value }
+      );
+      getOrders(); // Refresh orders after status change
     } catch (error) {
-      console.error(error);
+      console.error("Error updating order status:", error);
     }
   };
 
   return (
     <Layout title={"All Orders Data"}>
-      <div className="container-fluid m-3 p-3">
-        <div className="row">
-          <div className="col-lg-3 col-md-4 mb-3">
+      <div className="container mx-auto p-4">
+        <div className="flex flex-wrap">
+          <div className="w-full lg:w-1/4 mb-4">
             <AdminMenu />
           </div>
-          <div className="col-lg-9 col-md-8">
-            <h1 className="text-center mb-4">All Orders</h1>
-            {orders?.map((o, i) => (
-              <div className="border rounded shadow-sm mb-4">
-                <table className="table table-striped table-responsive">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Status</th>
-                      <th>Buyer</th>
-                      <th>Date</th>
-                      <th>Payment</th>
-                      <th>Quantity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{i + 1}</td>
-                      <td>
-                        <Select
-                          bordered={false}
-                          onChange={(value) => handleChange(o._id, value)}
-                          defaultValue={o?.status}
-                          style={{ width: "100%" }}
-                        >
-                          {status.map((s, i) => (
-                            <Option key={i} value={s}>
-                              {s}
-                            </Option>
-                          ))}
-                        </Select>
-                      </td>
-                      <td>{o?.buyer?.name}</td>
-                      <td>{moment(o?.createdAt).fromNow()}</td>
-                      <td>{o?.payment.success ? "Success" : "Failed"}</td>
-                      <td>{o?.products?.length}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className="container col-md-12">
-                  {o?.products?.map((p) => (
-                    <div
-                      className="row  mb-2 p-3 card flex-row align-items-center"
-                      key={p._id}
-                    >
-                      <div className="col-md-3 col-sm-12">
-                        <img
-                          src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
-                          className="card-img-top img-fluid"
-                          alt={p.name}
-                        />
+          <div className="w-full lg:w-3/4">
+            <h1 className="text-2xl font-semibold text-center mb-6">
+              All Orders
+            </h1>
+            {loading ? (
+              <div className="text-center text-lg">Loading...</div> // Loading indicator
+            ) : (
+              orders?.map((o, i) => (
+                <div
+                  key={o._id}
+                  className="border mx-4 border-gray-300 rounded-lg shadow-lg mb-2 p-2"
+                >
+                  <table className="min-w-full table-auto">
+                    <thead>
+                      <tr>
+                        <th className="px-2 py-1 text-left">#</th>
+                        <th className="px-2 py-1 text-left">Status</th>
+                        <th className="px-2 py-1 text-left">Buyer</th>
+                        <th className="px-2 py-1 text-left">Date</th>
+                        <th className="px-2 py-1 text-left">Payment</th>
+                        <th className="px-2 py-1 text-left">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-2 py-1">{i + 1}</td>
+                        <td className="px-2 py-1">
+                          <select
+                            className="w-full py-1 px-3 border border-gray-300 rounded-md"
+                            onChange={(e) =>
+                              handleChange(o._id, e.target.value)
+                            }
+                            defaultValue={o?.status}
+                          >
+                            {status.map((s, index) => (
+                              <option key={index} value={s}>
+                                {s}
+                              </option>
+                            ))}
+                          </select>
+                        </td>
+                        <td className="px-2 py-1">{o?.buyer?.name}</td>
+                        <td className="px-2 py-1">
+                          {moment(o?.createdAt).fromNow()}
+                        </td>
+                        <td className="px-2 py-1">
+                          {o?.payment.success ? "Success" : "Failed"}
+                        </td>
+                        <td className="px-2 py-1">{o?.products?.length}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="mt-4">
+                    {o?.products?.map((p) => (
+                      <div
+                        key={p._id}
+                        className="flex flex-wrap items-center mb-2 p-2 border border-gray-300 rounded-lg"
+                      >
+                        <div className="w-1/3 md:w-1/4 mb-2 md:mb-0">
+                          <img
+                            src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
+                            alt={p.name}
+                            className="w-full h-40 object-cover rounded-lg"
+                          />
+                        </div>
+                        <div className="w-2/3 md:w-3/4 pl-4">
+                          <p className="font-semibold">{p.name}</p>
+                          <p className="text-gray-600">
+                            {p.description.substring(0, 30)}...
+                          </p>
+                          <p className="text-lg font-semibold">
+                            Price: ${p.price}
+                          </p>
+                        </div>
                       </div>
-                      <div className="col-md-8 col-sm-12">
-                        <p>
-                          <strong>{p.name}</strong>
-                        </p>
-                        <p>{p.description.substring(0, 30)}...</p>
-                        <p>Price: ${p.price}</p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>

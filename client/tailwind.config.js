@@ -1,7 +1,7 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  prefix: "tw-", // Add prefix to all tailwind classes
   content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}", // Adjust based on your project
+    "./src/**/*.{js,jsx,ts,tsx}", // Include all files in the src folder
   ],
   theme: {
     extend: {},

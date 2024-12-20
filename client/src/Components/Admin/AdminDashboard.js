@@ -2,7 +2,6 @@ import React from "react";
 import AdminMenu from "./AdminMenu";
 import Layout from "../Layout/Layout";
 import { useAuth } from "../../Context/AuthContext";
-import "../css/AdminDashboard.css"; // Ensure you have a separate CSS file for custom styles
 import { FaUserTie, FaEnvelope, FaPhone } from "react-icons/fa"; // Import icons
 
 const AdminDashboard = () => {
@@ -10,26 +9,32 @@ const AdminDashboard = () => {
 
   return (
     <Layout title={"Dashboard - Admin"}>
-      <div className="container-fluid m-3 p-3 dashboard">
-        <div className="row">
-          <div className="col-lg-3 col-md-4 col-12 mb-3">
+      <div className="container mx-auto p-6 dashboard">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div className="lg:col-span-1 col-span-1">
             <AdminMenu />
           </div>
-          <div className="col-lg-9 col-md-8 col-12">
-            <div className="card p-4">
-              <h3 className="dashboard-header">
-                <FaUserTie className="dashboard-icon" /> Admin Name:{" "}
-                {auth?.user?.name}
-              </h3>
-              <h5 className="dashboard-info">
-                <FaEnvelope className="dashboard-icon" /> Admin Email:{" "}
-                {auth?.user?.email}
-              </h5>
-              <p className="dashboard-info">
-                <FaPhone className="dashboard-icon" /> Admin Contact:{" "}
-                {auth?.user?.phone}
-              </p>
-            </div>
+
+          <div className="lg:col-span-3 col-span-1 bg-white p-8 shadow-2xl rounded-xl space-y-6">
+            <h3 className="text-3xl font-semibold text-gray-900 flex items-center space-x-3">
+              <FaUserTie className="text-3xl text-blue-600" />
+              <span className="text-xl">Admin Name: {auth?.user?.name}</span>
+            </h3>
+
+            <h5 className="mt-4 text-xl text-gray-700 flex items-center space-x-3">
+              <FaEnvelope className="text-2xl text-blue-600" />
+              <span className="text-lg">Admin Email: {auth?.user?.email}</span>
+            </h5>
+
+            <p className="mt-4 text-xl text-gray-700 flex items-center space-x-3">
+              <FaPhone className="text-2xl text-blue-600" />
+              <span className="text-lg">
+                Admin Contact: {auth?.user?.phone}
+              </span>
+            </p>
+
+            {/* Additional Info Section */}
+            
           </div>
         </div>
       </div>

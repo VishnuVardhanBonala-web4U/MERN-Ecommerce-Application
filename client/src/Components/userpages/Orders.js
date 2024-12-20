@@ -13,7 +13,9 @@ const Orders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/orders`);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/orders`
+      );
       setOrders(data);
     } catch (error) {
       console.log(error);
@@ -26,74 +28,94 @@ const Orders = () => {
 
   return (
     <Layout title={"Your Orders"}>
-      <div className="container-fluid p-4">
-        <div className="row">
-          <div className="col-md-3">
+      <div className="container mx-auto p-4">
+        <div className="flex flex-wrap">
+          {/* User Menu */}
+          <div className="w-full md:w-1/4 lg:w-1/5 p-4">
             <UserMenu />
           </div>
-          <div className="col-md-9">
-            <h1 className="text-center mb-4">All Orders</h1>
-            {orders?.map((order, index) => (
-              <div
-                className="border rounded shadow-sm mb-4 p-3 order-card"
-                key={order._id}
-              >
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">S.NO</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Buyer</th>
-                      <th scope="col">Date</th>
-                      <th scope="col">Payment</th>
-                      <th scope="col">Quantity</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{index + 1}</td>
-                      <td
-                        className={`text-${order.status === "Completed" ? "success" : "danger"
+
+          {/* Orders List */}
+          <div className="w-full md:w-3/4 lg:w-4/5 p-4">
+            <h1 className="text-2xl font-bold text-center mb-6">All Orders</h1>
+            {orders?.length === 0 ? (
+              <p className="text-center text-lg">You have no orders yet.</p>
+            ) : (
+              orders?.map((order, index) => (
+                <div
+                  className="bg-white border border-gray-200 rounded-lg shadow-md mb-3 p-2"
+                  key={order._id}
+                >
+                  <table className="min-w-full table-auto text-gray-700">
+                    <thead>
+                      <tr>
+                        <th className="px-2 py-1">S.NO</th>
+                        <th className="px-2 py-1">Status</th>
+                        <th className="px-2 py-1">Buyer</th>
+                        <th className="px-2 py-1">Date</th>
+                        <th className="px-2 py-1">Payment</th>
+                        <th className="px-2 py-1">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="px-2 py-1">{index + 1}</td>
+                        <td
+                          className={`px-2 py-1 ${
+                            order.status === "Completed"
+                              ? "text-green-500"
+                              : "text-red-500"
                           }`}
-                      >
-                        {order.status}
-                      </td>
-                      <td>{order.buyer?.name}</td>
-                      <td>{moment(order.createAt).fromNow()}</td>
-                      <td
-                        className={`text-${order.payment.success ? "success" : "danger"
+                        >
+                          {order.status}
+                        </td>
+                        <td className="px-2 py-1">{order.buyer?.name}</td>
+                        <td className="px-2 py-1">
+                          {moment(order.createAt).fromNow()}
+                        </td>
+                        <td
+                          className={`px-2 py-1 ${
+                            order.payment.success
+                              ? "text-green-500"
+                              : "text-red-500"
                           }`}
+                        >
+                          {order.payment.success ? "Success" : "Failed"}
+                        </td>
+                        <td className="px-2 py-1">{order.products?.length}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  {/* Product Details */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                    {order.products?.map((product) => (
+                      <div
+                        className="bg-white flex items-center  flex-row  border border-gray-200 rounded-lg shadow-md hover:shadow-xl"
+                        key={product._id}
                       >
-                        {order.payment.success ? "Success" : "Failed"}
-                      </td>
-                      <td>{order.products?.length}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div className="row">
-                  {order.products?.map((product) => (
-                    <div className="col-md-4 mb-3" key={product._id}>
-                      <div className="card">
                         <img
                           src={`${process.env.REACT_APP_BASE_URL}/get-photo/${product._id}`}
-                          className="card-img-top object-fit-fill"
+                          className="w-24 h-24   object-contain mx-2 rounded-t-lg"
                           alt={product.name}
                         />
-                        <div className="card-body">
-                          <h5 className="card-title">{product.name}</h5>
-                          <p className="card-text">
+                        <div className="p-1">
+                          <h6 className="text-sm font-semibold">
+                            {product.name}
+                          </h6>
+                          <small className="text-gray-600 text-xs">
                             {product.description.substring(0, 50)}...
-                          </p>
-                          <p className="card-text">
-                            <strong>Price: </strong>${product.price}
+                          </small>
+                          <p  className="mt-2 text-xl font-bold">
+                           Price :  ${product.price}
                           </p>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>

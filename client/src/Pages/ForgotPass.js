@@ -2,27 +2,30 @@ import React, { useState } from "react";
 import Layout from "../Components/Layout/Layout";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const ForgotPass = () => {
-  const [userdata, Setuserdata] = useState({
+  const [userdata, setUserdata] = useState({
     email: "",
     newpassword: "",
     answer: "",
   });
 
   const navigate = useNavigate();
-  const HandleChange = (e) => {
-    Setuserdata({ ...userdata, [e.target.name]: e.target.value });
+
+  const handleChange = (e) => {
+    setUserdata({ ...userdata, [e.target.name]: e.target.value });
   };
 
-  const HandleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_BASE_URL}/forgetpass`, {
-        ...userdata,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/forgetpass`,
+        {
+          ...userdata,
+        }
+      );
       if (res && res.data.success) {
         toast.success(res && res.data.message);
         navigate("/login");
@@ -30,64 +33,84 @@ const ForgotPass = () => {
         toast.error(res && res.data.message);
       }
     } catch (error) {
-      toast.error(error);
+      toast.error(error.message || "Something went wrong!");
     }
   };
+
   return (
-    <>
-      <Layout title="Forget-password">
-        <div className="login" style={{ margin: "0px !important" }}>
-          <form onSubmit={HandleSubmit}>
-            <h5 className="text-center m-0 ">Reset Password</h5>
+    <Layout title="Forgot Password">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md p-6 bg-white shadow-md rounded-lg"
+        >
+          <h5 className="text-2xl font-bold text-center text-gray-800 mb-6">
+            Reset Password
+          </h5>
 
-            <div className="">
-              <label> Email Address</label>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your Email"
+              required
+              onChange={handleChange}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            />
+          </div>
 
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                aria-describedby="emailHelp"
-                name="email"
-                placeholder="Enter your Email"
-                required
-                onChange={HandleChange}
-              />
-            </div>
+          <div className="mb-4">
+            <label
+              htmlFor="answer"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Answer
+            </label>
+            <input
+              type="text"
+              id="answer"
+              name="answer"
+              placeholder="Enter your Answer"
+              required
+              onChange={handleChange}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            />
+          </div>
 
-            <div className="">
-              <label>Answer </label>
-              <input
-                type="text"
-                className="form-control"
-                id="password"
-                name="answer"
-                placeholder="Enter your Answer"
-                required
-                onChange={HandleChange}
-              />
-            </div>
+          <div className="mb-4">
+            <label
+              htmlFor="newpassword"
+              className="block text-sm font-medium text-gray-700"
+            >
+              New Password
+            </label>
+            <input
+              type="password"
+              id="newpassword"
+              name="newpassword"
+              placeholder="Enter your Password"
+              required
+              onChange={handleChange}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            />
+          </div>
 
-            <div className="">
-              <label>New Password</label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="newpassword"
-                placeholder="Enter your Password"
-                required
-                onChange={HandleChange}
-              />
-            </div>
-
-            <button type="submit" className="btn btn-primary form-control mt-2">
-              Reset Password
-            </button>
-          </form>
-        </div>
-      </Layout>
-    </>
+          <button
+            type="submit"
+            className="w-full py-2 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-md font-medium text-sm"
+          >
+            Reset Password
+          </button>
+        </form>
+      </div>
+    </Layout>
   );
 };
 

@@ -27,12 +27,13 @@ import Profile from "./Components/Profile";
 import AdminOrders from "./Components/Admin/AdminOrders";
 
 function App() {
-
-  console.log("check port", process.env.REACT_APP_BASE_URL)
+  console.log("check port", process.env.REACT_APP_BASE_URL);
   return (
     <>
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         <Route path="/dashboard" element={<UserPrivateRoute />}>
           <Route path="user" element={<UserDashboard />} />
@@ -56,13 +57,10 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
         </Route>
 
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Searched />} />
         <Route path="/product/:slug" element={<ProductDetails />} />
         <Route path="/category/:slug" element={<CategoryPage />} />
 
-        <Route path="/about" element={<About />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />

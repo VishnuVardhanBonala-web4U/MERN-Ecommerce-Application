@@ -7,8 +7,6 @@ import { useCart } from "../Context/cart";
 import Layout from "../Components/Layout/Layout";
 import { useAuth } from "../Context/AuthContext";
 
-import "./css/CartPage.css";
-
 const CartPage = () => {
   const [auth] = useAuth();
   const [cart, setCart] = useCart();
@@ -44,7 +42,9 @@ const CartPage = () => {
   // Get Braintree token
   const getToken = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_BASE_URL}/braintree/token`);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/braintree/token`
+      );
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -60,10 +60,13 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post(`${process.env.REACT_APP_BASE_URL}/braintree/payment`, {
-        nonce,
-        cart,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/braintree/payment`,
+        {
+          nonce,
+          cart,
+        }
+      );
       setLoading(false);
       localStorage.removeItem("cart");
       setCart([]);
@@ -77,41 +80,45 @@ const CartPage = () => {
 
   return (
     <Layout>
-      <div className="cart-page container mt-4 mb-5">
-        <div className="row mb-4">
-          <div className="col-12 text-center">
-            <h1 className="mb-2">
+      <div className="cart-page container mx-auto mt-4 mb-5">
+        <div className="row mb-4 text-center">
+          <div className="col-12">
+            <h1 className="text-3xl font-semibold mb-2">
               {!auth?.user ? "Hello Guest" : `Hello ${auth?.user?.name}`}
             </h1>
-            <p>
+            <p className="text-lg text-gray-700">
               {cart?.length
-                ? `You have ${cart.length} item${cart.length > 1 ? "s" : ""
-                } in your cart ${auth?.token ? "" : "please login to checkout!"
-                }`
+                ? `You have ${cart.length} item${
+                    cart.length > 1 ? "s" : ""
+                  } in your cart ${
+                    auth?.token ? "" : "please login to checkout!"
+                  }`
                 : "Your cart is empty"}
             </p>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-md-8 col-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="col-span-2">
             {cart?.map((p) => (
-              <div className="card mb-3 d-flex flex-row" key={p._id}>
-                <div className="card-img-container">
+              <div
+                className="card mb-3 flex flex-row bg-white shadow-lg rounded-lg overflow-scroll"
+                key={p._id}
+              >
+                <div className="w-32 h-32 bg-gray-200">
                   <img
                     src={`${process.env.REACT_APP_BASE_URL}/get-photo/${p._id}`}
-                    className="card-img"
+                    className="w-full h-full object-contain"
                     alt={p.name}
                   />
                 </div>
-                <div className="card-body d-flex flex-column justify-content-between">
+                <div className="p-2 flex flex-col justify-between w-full">
                   <div>
-                    <h5 className="card-title">{p.name}</h5>
-                    <p className="card-text">
+                    <h5 className="text-md font-semibold">{p.name}</h5>
+                    <p className="text-xs text-gray-500">
                       {p.description.substring(0, 30)}...
                     </p>
-                    <p className="card-price">
-                      Price:{" "}
+                    <p className="mt-2 text-md font-bold text-gray-700">
                       {p.price.toLocaleString("en-US", {
                         style: "currency",
                         currency: "USD",
@@ -119,7 +126,7 @@ const CartPage = () => {
                     </p>
                   </div>
                   <button
-                    className="btn btn-danger mt-2"
+                    className="mt-2 w-32 bg-red-600 text-white py-2 px-4 rounded-lg shadow hover:bg-red-700 transition"
                     onClick={() => removeCartItem(p._id)}
                   >
                     Remove
@@ -129,16 +136,17 @@ const CartPage = () => {
             ))}
           </div>
 
-          <div className="col-md-4 col-12 cart-summary">
-            <h2>Cart Summary</h2>
-            <hr />
-            <h4>Total: {totalPrice()}</h4>
+          <div className="cart-summary bg-white p-4 shadow-lg rounded-lg">
+            <h2 className="text-xl font-semibold">Cart Summary</h2>
+            <hr className="my-2 border-gray-300" />
+            <h4 className="text-lg font-semibold">Total: {totalPrice()}</h4>
+
             {auth?.user?.address ? (
               <div className="mb-3">
-                <h4>Current Address</h4>
-                <h5>{auth?.user?.address}</h5>
+                <h4 className="text-md font-semibold">Current Address</h4>
+                <h5 className="text-sm text-gray-600">{auth?.user?.address}</h5>
                 <button
-                  className="btn btn-outline-warning"
+                  className="mt-2 bg-yellow-500 text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-600 transition"
                   onClick={() => navigate("/dashboard/user/profile")}
                 >
                   Update Address
@@ -148,14 +156,14 @@ const CartPage = () => {
               <div className="mb-3">
                 {auth?.token ? (
                   <button
-                    className="btn btn-outline-warning"
+                    className="mt-2 bg-yellow-500 text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-600 transition"
                     onClick={() => navigate("/dashboard/user/profile")}
                   >
                     Update Address
                   </button>
                 ) : (
                   <button
-                    className="btn btn-outline-warning"
+                    className="mt-2 bg-blue-600 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition"
                     onClick={() => navigate("/login", { state: "/cart" })}
                   >
                     Please login to checkout
@@ -165,13 +173,13 @@ const CartPage = () => {
             )}
 
             {clientToken && auth?.token && cart?.length > 0 && (
-              <div className="mt-3">
+              <div className="mt-4">
                 <DropIn
                   options={{ authorization: clientToken }}
                   onInstance={(instance) => setInstance(instance)}
                 />
                 <button
-                  className="btn btn-primary mt-2"
+                  className="w-full mt-4 bg-green-600 text-white py-2 px-4 rounded-lg shadow hover:bg-green-700 transition"
                   onClick={handlePayment}
                   disabled={loading || !instance || !auth?.user?.address}
                 >
